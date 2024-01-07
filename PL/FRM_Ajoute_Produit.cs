@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using GestionDeStock.BL;
+using System.Diagnostics.Eventing.Reader;
 
 namespace GestionDeStock.PL
 {
     public partial class FRM_Ajoute_Produit : Form
     {
         private GestionDeStock db;
-        public FRM_Ajoute_Produit()
+        private UserControl userProduit;
+            public FRM_Ajoute_Produit(UserControl user)
         {
             InitializeComponent();
             db = new GestionDeStock();
+            this.userProduit = user;    
             Categorie.DataSource = db.Categories.ToList();
             Categorie.DisplayMember = "Nom_Categorie";
             Categorie.ValueMember = "ID_Categorie";
@@ -159,7 +162,7 @@ namespace GestionDeStock.PL
                 e.Handled = false;
             }
         }
-
+        public int idproduit;
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             if (textObligatoire() != null)
@@ -176,11 +179,33 @@ namespace GestionDeStock.PL
                     if (produits.Ajoute_Produit(tbnNom.Text,int.Parse(btnQuantite.Text), btnPrix.Text, bytimage,Convert.ToInt32 (Categorie.SelectedValue))==true)
                     {
                         MessageBox.Show("produit ajoute avec succee !!", "Ajoute",MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        (userProduit as User_liste_Produit).actualuserdvg();
                     }else
                     {
                         MessageBox.Show("produit existe ", "Ajoute", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
+                }
+                else
+                {
+                    
+                    MemoryStream m = new MemoryStream();
+                    btnPicture.Image.Save(m, btnPicture.Image.RawFormat);
+                    Byte[] bytimage = m.ToArray();
+                    BL.CLS_produit clsproduits = new BL.CLS_produit();
+                    DialogResult RS = MessageBox.Show("voulez vous vraiment modifie ", "modification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (RS == DialogResult.Yes)
+                    {
+                        clsproduits.Modifier_Produit(idproduit, tbnNom.Text, int.Parse(btnQuantite.Text), btnPrix.Text, bytimage, Convert.ToInt32(Categorie.SelectedValue));
+                        MessageBox.Show("produit modifie avec succee !!", "modification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        (userProduit as User_liste_Produit).actualuserdvg();
+                        Close();
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("modification annule", "modification", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
                 }
             }
         }

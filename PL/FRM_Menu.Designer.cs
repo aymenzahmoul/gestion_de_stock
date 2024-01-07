@@ -32,9 +32,8 @@
             this.pnlbut = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.btnutilisateur = new System.Windows.Forms.Button();
-            this.btncommande = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.btncategorie = new System.Windows.Forms.Button();
-            this.btnproduit = new System.Windows.Forms.Button();
             this.btnclient = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -47,6 +46,7 @@
             this.btnparametre = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnproduit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlparametre.SuspendLayout();
@@ -58,7 +58,7 @@
             this.panel1.Controls.Add(this.pnlbut);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.btnutilisateur);
-            this.panel1.Controls.Add(this.btncommande);
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btncategorie);
             this.panel1.Controls.Add(this.btnproduit);
             this.panel1.Controls.Add(this.btnclient);
@@ -112,24 +112,24 @@
             this.btnutilisateur.UseVisualStyleBackColor = false;
             this.btnutilisateur.Click += new System.EventHandler(this.btnutilisateur_Click);
             // 
-            // btncommande
+            // button4
             // 
-            this.btncommande.BackColor = System.Drawing.Color.Transparent;
-            this.btncommande.FlatAppearance.BorderSize = 0;
-            this.btncommande.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
-            this.btncommande.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
-            this.btncommande.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncommande.ForeColor = System.Drawing.SystemColors.Window;
-            this.btncommande.Image = global::GestionDeStock.Properties.Resources.shopping_icon;
-            this.btncommande.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncommande.Location = new System.Drawing.Point(27, 412);
-            this.btncommande.Margin = new System.Windows.Forms.Padding(5);
-            this.btncommande.Name = "btncommande";
-            this.btncommande.Size = new System.Drawing.Size(252, 66);
-            this.btncommande.TabIndex = 5;
-            this.btncommande.Text = "         Commande";
-            this.btncommande.UseVisualStyleBackColor = false;
-            this.btncommande.Click += new System.EventHandler(this.button4_Click);
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.SystemColors.Window;
+            this.button4.Image = global::GestionDeStock.Properties.Resources.shopping_icon;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(27, 412);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(252, 66);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "         Commande";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btncategorie
             // 
@@ -149,25 +149,6 @@
             this.btncategorie.Text = "          Categorie";
             this.btncategorie.UseVisualStyleBackColor = false;
             this.btncategorie.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // btnproduit
-            // 
-            this.btnproduit.BackColor = System.Drawing.Color.Transparent;
-            this.btnproduit.FlatAppearance.BorderSize = 0;
-            this.btnproduit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
-            this.btnproduit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
-            this.btnproduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnproduit.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnproduit.Image = global::GestionDeStock.Properties.Resources.shop_cart_add_icon;
-            this.btnproduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnproduit.Location = new System.Drawing.Point(29, 199);
-            this.btnproduit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnproduit.Name = "btnproduit";
-            this.btnproduit.Size = new System.Drawing.Size(189, 66);
-            this.btnproduit.TabIndex = 7;
-            this.btnproduit.Text = "         Produit";
-            this.btnproduit.UseVisualStyleBackColor = false;
-            this.btnproduit.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnclient
             // 
@@ -309,6 +290,7 @@
             this.pnlfichier.Name = "pnlfichier";
             this.pnlfichier.Size = new System.Drawing.Size(1134, 696);
             this.pnlfichier.TabIndex = 10;
+            this.pnlfichier.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlfichier_Paint);
             // 
             // btnparametre
             // 
@@ -357,6 +339,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // btnproduit
+            // 
+            this.btnproduit.BackColor = System.Drawing.Color.Transparent;
+            this.btnproduit.FlatAppearance.BorderSize = 0;
+            this.btnproduit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
+            this.btnproduit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(59)))));
+            this.btnproduit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnproduit.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnproduit.Image = global::GestionDeStock.Properties.Resources.shop_cart_add_icon;
+            this.btnproduit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnproduit.Location = new System.Drawing.Point(29, 199);
+            this.btnproduit.Margin = new System.Windows.Forms.Padding(5);
+            this.btnproduit.Name = "btnproduit";
+            this.btnproduit.Size = new System.Drawing.Size(189, 66);
+            this.btnproduit.TabIndex = 7;
+            this.btnproduit.Text = "         Produit";
+            this.btnproduit.UseVisualStyleBackColor = false;
+            this.btnproduit.Click += new System.EventHandler(this.button6_Click);
+            // 
             // FRM_Menu
             // 
             this.AllowDrop = true;
@@ -384,9 +385,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnclient;
-        private System.Windows.Forms.Button btnproduit;
-        private System.Windows.Forms.Button btncommande;
-        private System.Windows.Forms.Button btncategorie;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnutilisateur;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel pnlbut;
@@ -400,5 +399,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlfichier;
+        private System.Windows.Forms.Button btnproduit;
+        private System.Windows.Forms.Button btncategorie;
     }
 }

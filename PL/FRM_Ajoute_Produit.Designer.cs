@@ -242,7 +242,7 @@
             // btnPicture
             // 
             this.btnPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnPicture.Location = new System.Drawing.Point(120, 117);
+            this.btnPicture.Location = new System.Drawing.Point(133, 117);
             this.btnPicture.Name = "btnPicture";
             this.btnPicture.Size = new System.Drawing.Size(259, 163);
             this.btnPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -371,11 +371,11 @@
         private System.Windows.Forms.Panel panel6;
         public System.Windows.Forms.TextBox tbnNom;
         public System.Windows.Forms.Label labtitre;
-        private System.Windows.Forms.PictureBox btnPicture;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnParcourie;
-        private System.Windows.Forms.ComboBox Categorie;
         private System.Windows.Forms.Button btnquitte;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.PictureBox btnPicture;
+        public System.Windows.Forms.ComboBox Categorie;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GestionDeStock.PL
 {
@@ -30,6 +31,7 @@ namespace GestionDeStock.PL
         {
             InitializeComponent();
             db = new GestionDeStock();
+            txtrecherche.Enabled = false;
         }
 
         public void actualise()
@@ -43,12 +45,13 @@ namespace GestionDeStock.PL
         }
         public string verifie()
         {
-            int nb = 0;
-            for(int i = 0; i < dvgclient.Rows.Count; i++)
-            {
-                if ((bool)dvgclient.Rows[i].Cells[0].Value == true)
+                int nb = 0;
+                for(int i = 0; i < dvgclient.Rows.Count; i++)
                 {
-                    nb++;
+                    if ((bool)dvgclient.Rows[i].Cells[0].Value == true)
+                    {
+                        nb++;
+                    }
                 }
                 if (nb == 0)
                 {
@@ -58,10 +61,10 @@ namespace GestionDeStock.PL
                 {
                     return "selectionne une seul client   ";
                 }
-                
-            }
-            return null;
-        }
+                return null;
+         }
+           
+        
         private void user_list_client_Load(object sender, EventArgs e)
         {
             actualise();
@@ -154,7 +157,57 @@ namespace GestionDeStock.PL
 
         private void txtrecherche_TextChanged(object sender, EventArgs e)
         {
+            db = new GestionDeStock();
+            var listerecherche=db.Clients.ToList();
+            if (txtrecherche.Text != "")
+            {
+                switch (combrecherche.Text) {
+                    case "Nom":
+                        listerecherche= listerecherche.Where(s=>s.Nom_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList(); 
+                        break;
+                    case "Prenom":
+                        listerecherche = listerecherche.Where(s => s.Prenom_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                    case "Adresse":
+                        listerecherche = listerecherche.Where(s => s.Adresse_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                    case "Email":
+                        listerecherche = listerecherche.Where(s => s.Email_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                    
+                    case "Telephone":
+                        listerecherche = listerecherche.Where(s => s.Telephone_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                    case "Pays":
+                        listerecherche = listerecherche.Where(s => s.Pays_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                    case "Ville":
+                        listerecherche = listerecherche.Where(s => s.Ville_client.IndexOf(txtrecherche.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+                        break;
+                }
+            }
+            dvgclient.Rows.Clear();
+            
 
+            foreach (var item in listerecherche)
+            {
+                dvgclient.Rows.Add(false, item.ID_Client, item.Nom_client, item.Prenom_client, item.Adresse_client, item.Telephone_client, item.Email_client, item.Pays_client, item.Ville_client);
+            }
+
+
+       
+        }
+
+        private void dvgclient_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void combrecherche_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //activie le textbx de recherche
+            txtrecherche.Enabled = true;
+            txtrecherche.Text = "";
         }
     }
 }

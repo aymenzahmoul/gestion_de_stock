@@ -35,9 +35,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtrecherche = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.combrecherche = new System.Windows.Forms.ComboBox();
             this.dvgclient = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnmodifer = new System.Windows.Forms.Button();
+            this.btnsuprimer = new System.Windows.Forms.Button();
+            this.btnajouter = new System.Windows.Forms.Button();
+            this.MYSELECT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,9 +49,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnmodifer = new System.Windows.Forms.Button();
-            this.btnsuprimer = new System.Windows.Forms.Button();
-            this.btnajouter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgclient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,21 +96,22 @@
             this.panel3.Size = new System.Drawing.Size(314, 2);
             this.panel3.TabIndex = 8;
             // 
-            // comboBox1
+            // combrecherche
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.combrecherche.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combrecherche.FormattingEnabled = true;
+            this.combrecherche.Items.AddRange(new object[] {
             "Nom",
             "Prenom",
             "Email",
             "Telephone",
             "Ville",
             "Pays"});
-            this.comboBox1.Location = new System.Drawing.Point(198, 153);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(252, 39);
-            this.comboBox1.TabIndex = 9;
+            this.combrecherche.Location = new System.Drawing.Point(198, 153);
+            this.combrecherche.Name = "combrecherche";
+            this.combrecherche.Size = new System.Drawing.Size(252, 39);
+            this.combrecherche.TabIndex = 9;
+            this.combrecherche.SelectedIndexChanged += new System.EventHandler(this.combrecherche_SelectedIndexChanged);
             // 
             // dvgclient
             // 
@@ -131,7 +132,7 @@
             this.dvgclient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dvgclient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgclient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.MYSELECT,
             this.Column9,
             this.Column2,
             this.Column3,
@@ -161,12 +162,63 @@
             this.dvgclient.RowTemplate.Height = 24;
             this.dvgclient.Size = new System.Drawing.Size(1102, 447);
             this.dvgclient.TabIndex = 10;
+            this.dvgclient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgclient_CellContentClick);
             // 
-            // Column1
+            // btnmodifer
             // 
-            this.Column1.HeaderText = "select";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
+            this.btnmodifer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnmodifer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.btnmodifer.FlatAppearance.BorderSize = 0;
+            this.btnmodifer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnmodifer.Image = global::GestionDeStock.Properties.Resources.Recycle_iconaaa;
+            this.btnmodifer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnmodifer.Location = new System.Drawing.Point(407, 16);
+            this.btnmodifer.Margin = new System.Windows.Forms.Padding(6);
+            this.btnmodifer.Name = "btnmodifer";
+            this.btnmodifer.Size = new System.Drawing.Size(288, 56);
+            this.btnmodifer.TabIndex = 4;
+            this.btnmodifer.Text = "Modifier";
+            this.btnmodifer.UseVisualStyleBackColor = false;
+            this.btnmodifer.Click += new System.EventHandler(this.btnmodifer_Click);
+            // 
+            // btnsuprimer
+            // 
+            this.btnsuprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnsuprimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.btnsuprimer.FlatAppearance.BorderSize = 0;
+            this.btnsuprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsuprimer.Image = global::GestionDeStock.Properties.Resources.Close_2_icon;
+            this.btnsuprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnsuprimer.Location = new System.Drawing.Point(791, 16);
+            this.btnsuprimer.Margin = new System.Windows.Forms.Padding(6);
+            this.btnsuprimer.Name = "btnsuprimer";
+            this.btnsuprimer.Size = new System.Drawing.Size(331, 56);
+            this.btnsuprimer.TabIndex = 3;
+            this.btnsuprimer.Text = "Supprimer";
+            this.btnsuprimer.UseVisualStyleBackColor = false;
+            this.btnsuprimer.Click += new System.EventHandler(this.btnsuprimer_Click);
+            // 
+            // btnajouter
+            // 
+            this.btnajouter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.btnajouter.FlatAppearance.BorderSize = 0;
+            this.btnajouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnajouter.Image = global::GestionDeStock.Properties.Resources.Actions_list_add_icon;
+            this.btnajouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnajouter.Location = new System.Drawing.Point(20, 16);
+            this.btnajouter.Margin = new System.Windows.Forms.Padding(6);
+            this.btnajouter.Name = "btnajouter";
+            this.btnajouter.Size = new System.Drawing.Size(297, 56);
+            this.btnajouter.TabIndex = 0;
+            this.btnajouter.Text = "Ajouter";
+            this.btnajouter.UseVisualStyleBackColor = false;
+            this.btnajouter.Click += new System.EventHandler(this.btnajouter_Click);
+            // 
+            // MYSELECT
+            // 
+            this.MYSELECT.HeaderText = "select";
+            this.MYSELECT.MinimumWidth = 6;
+            this.MYSELECT.Name = "MYSELECT";
             // 
             // Column9
             // 
@@ -224,63 +276,13 @@
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
-            // btnmodifer
-            // 
-            this.btnmodifer.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnmodifer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.btnmodifer.FlatAppearance.BorderSize = 0;
-            this.btnmodifer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnmodifer.Image = global::GestionDeStock.Properties.Resources.Recycle_iconaaa;
-            this.btnmodifer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnmodifer.Location = new System.Drawing.Point(407, 16);
-            this.btnmodifer.Margin = new System.Windows.Forms.Padding(6);
-            this.btnmodifer.Name = "btnmodifer";
-            this.btnmodifer.Size = new System.Drawing.Size(288, 56);
-            this.btnmodifer.TabIndex = 4;
-            this.btnmodifer.Text = "Modifier";
-            this.btnmodifer.UseVisualStyleBackColor = false;
-            this.btnmodifer.Click += new System.EventHandler(this.btnmodifer_Click);
-            // 
-            // btnsuprimer
-            // 
-            this.btnsuprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnsuprimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.btnsuprimer.FlatAppearance.BorderSize = 0;
-            this.btnsuprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsuprimer.Image = global::GestionDeStock.Properties.Resources.Close_2_icon;
-            this.btnsuprimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsuprimer.Location = new System.Drawing.Point(791, 16);
-            this.btnsuprimer.Margin = new System.Windows.Forms.Padding(6);
-            this.btnsuprimer.Name = "btnsuprimer";
-            this.btnsuprimer.Size = new System.Drawing.Size(331, 56);
-            this.btnsuprimer.TabIndex = 3;
-            this.btnsuprimer.Text = "Supprimer";
-            this.btnsuprimer.UseVisualStyleBackColor = false;
-            this.btnsuprimer.Click += new System.EventHandler(this.btnsuprimer_Click);
-            // 
-            // btnajouter
-            // 
-            this.btnajouter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
-            this.btnajouter.FlatAppearance.BorderSize = 0;
-            this.btnajouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnajouter.Image = global::GestionDeStock.Properties.Resources.Actions_list_add_icon;
-            this.btnajouter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnajouter.Location = new System.Drawing.Point(20, 16);
-            this.btnajouter.Margin = new System.Windows.Forms.Padding(6);
-            this.btnajouter.Name = "btnajouter";
-            this.btnajouter.Size = new System.Drawing.Size(297, 56);
-            this.btnajouter.TabIndex = 0;
-            this.btnajouter.Text = "Ajouter";
-            this.btnajouter.UseVisualStyleBackColor = false;
-            this.btnajouter.Click += new System.EventHandler(this.btnajouter_Click);
-            // 
             // user_list_client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Controls.Add(this.dvgclient);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.combrecherche);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.txtrecherche);
             this.Controls.Add(this.panel2);
@@ -309,9 +311,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtrecherche;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox combrecherche;
         private System.Windows.Forms.DataGridView dvgclient;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn MYSELECT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

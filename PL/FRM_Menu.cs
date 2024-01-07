@@ -23,7 +23,7 @@ namespace GestionDeStock.PL
         {
             btnclient.Enabled = false;
             btncategorie.Enabled = false;
-            btncommande.Enabled = false;
+            button4.Enabled = false;
             btnproduit.Enabled = false;
             btnutilisateur.Enabled = false;
             btncopie.Enabled = false;
@@ -37,7 +37,7 @@ namespace GestionDeStock.PL
         {
             btnclient.Enabled = true;
             btncategorie.Enabled = true;
-            btncommande.Enabled = true;
+            button4.Enabled = true;
             btnproduit.Enabled = true;
             btnutilisateur.Enabled = true;
             btncopie.Enabled = true;
@@ -83,20 +83,32 @@ namespace GestionDeStock.PL
         private void button6_Click(object sender, EventArgs e)
         {
             pnlbut.Top = btnproduit.Top;
-           
-            if (!pnlfichier.Controls.Contains(User_liste_Produit.instance))
+
+            if (!pnlfichier.Controls.Contains(User_liste_Produit.Instance))
             {
-                pnlfichier.Controls.Add(User_liste_Produit.instance);
-                User_liste_Produit.instance.Dock = DockStyle.Fill;
-                User_liste_Produit.instance.BringToFront();
+                pnlfichier.Controls.Add(User_liste_Produit.Instance);
+                User_liste_Produit.Instance.Dock = DockStyle.Fill;
+                User_liste_Produit.Instance.BringToFront();
             }
             else
-                User_liste_Produit.instance.BringToFront();
+            {
+                User_liste_Produit.Instance.BringToFront();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            pnlbut.Top = btncommande.Top;
+            pnlbut.Top = button4.Top;
+            if (!pnlfichier.Controls.Contains(User_list_Commande.Instance))
+            {
+                pnlfichier.Controls.Add(User_list_Commande.Instance);
+                User_list_Commande.Instance.Dock = DockStyle.Fill;
+                User_list_Commande.Instance.BringToFront();
+            }
+            else
+            {
+                User_list_Commande.Instance.BringToFront();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -116,6 +128,18 @@ namespace GestionDeStock.PL
         private void button5_Click(object sender, EventArgs e)
         {
             pnlbut.Top = btncategorie.Top;
+
+
+            if (!pnlfichier.Controls.Contains(USER_list_Categorie.Instance))
+            {
+                pnlfichier.Controls.Add(USER_list_Categorie.Instance);
+                USER_list_Categorie.Instance.Dock = DockStyle.Fill;
+                USER_list_Categorie.Instance.BringToFront();
+            }
+            else
+            {
+                USER_list_Categorie.Instance.BringToFront();
+            }
         }
 
         private void btnutilisateur_Click(object sender, EventArgs e)
@@ -171,6 +195,11 @@ namespace GestionDeStock.PL
         }
 
         private void pnlparametre_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlfichier_Paint(object sender, PaintEventArgs e)
         {
 
         }
