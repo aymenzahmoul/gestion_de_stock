@@ -49,7 +49,7 @@ namespace GestionDeStock.PL
         }
         private void FRM_Menu_Load(object sender, EventArgs e)
         {
-            deactiveform();
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
